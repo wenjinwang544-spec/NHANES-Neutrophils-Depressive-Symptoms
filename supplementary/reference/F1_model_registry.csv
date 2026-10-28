@@ -1,0 +1,5 @@
+model,N,formula,family,design_df,converged,warnings
+Model1_PHQ10,33174,PHQ10 ~ rcs_linear + rcs_nl1 + rcs_nl2 + age + sex + bmi + smoking +      cycle_factor + race_eth,quasibinomial,109,TRUE,
+Model1_PHQ9_total,33174,PHQ9_total ~ rcs_linear + rcs_nl1 + rcs_nl2 + age + sex + bmi +      smoking + cycle_factor + race_eth,quasipoisson,109,TRUE,
+Model2_PHQ10,29415,PHQ10 ~ rcs_linear + rcs_nl1 + rcs_nl2 + age + sex + bmi + smoking +      cycle_factor + race_eth + log10_cotinine + alcohol4 + education +      pir,quasibinomial,109,TRUE,
+Model2_PHQ9_total,29415,PHQ9_total ~ rcs_linear + rcs_nl1 + rcs_nl2 + age + sex + bmi +      smoking + cycle_factor + race_eth + log10_cotinine + alcohol4 +      education + pir,quasipoisson,109,TRUE,

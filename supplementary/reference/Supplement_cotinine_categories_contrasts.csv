@@ -1,0 +1,3 @@
+model,contrast,beta,SE,df,P
+D2_3d_Model2_cotinine3,log_Neutrophil - log_Lymphocyte,0.200092029728394,0.131939894438813,109,0.132277912630027
+D2_3d_Model2_cotinine3,log_Neutrophil - log_Platelet,0.0984739310296522,0.160141128173263,109,0.539889380037009

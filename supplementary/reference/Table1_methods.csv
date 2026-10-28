@@ -1,0 +1,22 @@
+variable,P,SMD,P_method,SMD_method
+age,0.0808286558366504,0.0491518522194282,survey Gaussian x~PHQ10; residual-df t,absolute standardized mean difference; pooled survey variance
+bmi,2.39537409110335e-13,0.233978962447812,survey Gaussian x~PHQ10; residual-df t,absolute standardized mean difference; pooled survey variance
+log10_cotinine,1.61044164597289e-28,0.475986364891721,survey Gaussian x~PHQ10; residual-df t,absolute standardized mean difference; pooled survey variance
+pir,3.6464235781533e-39,0.607065934117917,survey Gaussian x~PHQ10; residual-df t,absolute standardized mean difference; pooled survey variance
+PHQ9_total,8.62869222801072e-127,3.76281821764919,survey Gaussian x~PHQ10; residual-df t,absolute standardized mean difference; pooled survey variance
+Neutrophil_count,2.32077168876088e-14,0.253009933211932,survey Gaussian x~PHQ10; residual-df t,absolute standardized mean difference; pooled survey variance
+Lymphocyte_count,2.97221326185976e-09,0.111197151188987,survey Gaussian x~PHQ10; residual-df t,absolute standardized mean difference; pooled survey variance
+Platelet_count,1.18430512975596e-06,0.147412765321305,survey Gaussian x~PHQ10; residual-df t,absolute standardized mean difference; pooled survey variance
+WBC_count,6.61655907398256e-16,0.250994751522877,survey Gaussian x~PHQ10; residual-df t,absolute standardized mean difference; pooled survey variance
+SII,1.9786758429766e-07,0.13817518418888,survey Gaussian x~PHQ10; residual-df t,absolute standardized mean difference; pooled survey variance
+sex,2.41248309710539e-18,0.275255309830262,Rao-Scott second-order F,multinomial pooled covariance
+race_eth,2.28307860925092e-05,0.119953604807437,Rao-Scott second-order F,multinomial pooled covariance
+smoking,2.09527723106332e-47,0.485285095511283,Rao-Scott second-order F,multinomial pooled covariance
+education,2.36215508725425e-32,0.453902292280886,Rao-Scott second-order F,multinomial pooled covariance
+alcohol4,5.74045115546232e-08,0.189432592658274,Rao-Scott second-order F,multinomial pooled covariance
+diabetes,9.30376205451558e-13,0.177969363689804,Rao-Scott second-order F,multinomial pooled covariance
+hypertension,1.90792648159961e-17,0.258753116394833,Rao-Scott second-order F,multinomial pooled covariance
+any_nsaid,1.022178830329e-22,0.259015921615776,Rao-Scott second-order F,multinomial pooled covariance
+any_corticosteroid,1.66909859653073e-06,0.123214788211136,Rao-Scott second-order F,multinomial pooled covariance
+any_statin,0.046470013087695,0.0459518165223743,Rao-Scott second-order F,multinomial pooled covariance
+antidep,4.93052157272147e-54,0.61948042574055,Rao-Scott second-order F,multinomial pooled covariance

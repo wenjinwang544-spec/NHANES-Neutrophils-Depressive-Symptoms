@@ -1,0 +1,11 @@
+step,computed,requested,difference
+age_ge18_base,42143,42143,0
+PHQ9_incomplete,5884,5884,0
+PHQ9_complete,36259,36259,0
+CBC_missing_or_nonpositive,1511,1511,0
+CBC_complete_positive,34748,34748,0
+BMI_only_missing,316,316,0
+smoking_only_missing,1234,1234,0
+BMI_and_smoking_missing,24,24,0
+early_18_19_smoking_missing,1240,1240,0
+final_included,33174,33174,0

@@ -1,0 +1,10 @@
+check,passed
+Table2 coefficients and P source match,TRUE
+Model1 FMI not reported,TRUE
+five-test Holm,TRUE
+eight-test Holm,TRUE
+fixed SD nine forest effects,TRUE
+four spline models converged without warnings,TRUE
+four reference points exactly 1,TRUE
+shared full-sample knots,TRUE
+input RDS hashes unchanged,TRUE
