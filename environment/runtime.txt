@@ -1,0 +1,16 @@
+$R_version
+[1] "R version 4.5.2 (2025-10-31)"
+
+$platform
+[1] "aarch64-apple-darwin20"
+
+$system
+ sysname  release  machine 
+"Darwin" "24.6.0"  "arm64" 
+
+$locale
+[1] "C.UTF-8/C.UTF-8/C.UTF-8/C/C.UTF-8/C.UTF-8"
+
+$RNGkind
+[1] "Mersenne-Twister" "Inversion"        "Rejection"       
+

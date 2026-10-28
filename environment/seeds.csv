@@ -1,0 +1,6 @@
+"analysis","seed","note"
+"NHANES MI",20261008,"20 imputations x20 iterations; pmm donors5"
+"AUC PSU bootstrap",20261013,"500 paired replicates"
+"Shapley PSU bootstrap",20261014,"200 replicates"
+"Attenuation PSU bootstrap",20261014,"1000 replicates"
+"MR validation only",20261027,"Historical MR stochastic seed not established; do not replace manuscript values"
