@@ -1,8 +1,20 @@
-# NHANES neutrophil count and depressive symptoms — final code archive
+# NHANES neutrophil count and depressive symptoms – final code archive
 
-研究：**Neutrophil count and depressive symptoms in U.S. adults: a cross-sectional analysis of attenuation after socioeconomic and clinical adjustment**。NHANES 2005–2018，7 个周期，主要样本 33,174 人。主设计为全成人复杂抽样设计后的子总体分析，合并 MEC 权重 WTMEC2YR/7，保留分层与 PSU，nest=TRUE。
+## Overview
 
-本包以第七阶段安全修复代码为唯一代码基准，第五阶段锁定结果为数值基准，并纳入第八阶段限定运行验证记录。本次仅整理代码、文档与聚合参考结果，**未重新运行科研模型，未公开发布；已准备限定原创代码范围的 MIT LICENSE，等待最后发布批准**。
+Analysis code for "Neutrophil count and depressive symptoms in U.S. adults: a cross-sectional analysis of attenuation after socioeconomic and clinical adjustment" (NHANES 2005–2018, n = 33,174).
+
+**Included:** R/Python scripts, tests, aggregate reference results, workflow provenance. **Not included:** participant-level data, external GWAS inputs, private intermediate objects.
+
+**Validation status:** the reference results are the locked values used in the manuscript; limited verification runs are documented in docs/VALIDATION_STATUS.md. The full pipeline (raw data → new imputation → all results) was not executed end-to-end in a single run. The software environment is documented but not fully locked. Online MR extraction and LD clumping are marked UNVALIDATED.
+
+**License:** MIT for original code only (see LICENSE).
+
+**Language note:** Detailed usage notes below are written in Chinese.
+
+研究设计：NHANES 2005–2018，7 个周期，主要样本 33,174 人。主设计为全成人复杂抽样设计后的子总体分析，合并 MEC 权重 WTMEC2YR/7，保留分层与 PSU，nest=TRUE。
+
+本包整理代码、文档与聚合参考结果，未重新运行科研模型；原创代码以 MIT LICENSE 发布。数值基准为锁定的参考结果，验证范围与限制见 docs/VALIDATION_STATUS.md。
 
 ## 目录与使用入口
 
@@ -13,7 +25,7 @@
 - `environment/`：观测软件版本、依赖与种子；不是完全锁定的跨平台安装环境。
 - `supplementary/validated/`：当前 S5/S8 与 Figure3 的锁定聚合结果；`supplementary/reference/` 为历史数值核对基准，不能据此替代修订结果。
 - `reference_results/README.md`：当前参考结果与历史比较文件的使用规则，避免重复复制同一套数据。
-- `figures/`：锁定 Figure3 PDF（PNG未纳入此次公开候选，原因见下文），属于结果图而非投稿手稿。
+- `figures/`：锁定 Figure3 PDF，属于结果图而非投稿手稿。
 - `provenance/workflow.csv`：逐步输入—代码—输出—论文用途；`docs/SCRIPT_CATALOG.md`：每个脚本的作用及正式执行顺序。
 - `docs/VALIDATION_STATUS.md`、`docs/RELEASE_NOTES.md`：验证边界及本次整理检查结论。
 
@@ -33,7 +45,7 @@ Figure1/2 原绘图后端使用 macOS Quartz；并行 Bootstrap 使用 mclapply 
 
 ## 初始化：源码目录不能作为输出目录
 
-以下均为占位绝对路径，请替换为自己的真实路径；`/separate/new_session` 必须**尚不存在**，且与研究总目录、源码、历史候选包、全部输入目录互不重叠。归档策略会自动保护源码父目录。外部研究者只需声明自己实际存在的输入/保护目录，无须建立阶段5–8目录；本地作者应额外声明原研究及历史目录。
+以下均为占位绝对路径，请替换为自己的真实路径；`/separate/new_session` 必须**尚不存在**，且与研究总目录、源码、历史候选包、全部输入目录互不重叠。归档策略会自动保护源码父目录。外部研究者只需声明自己实际存在的输入/保护目录，无须建立作者本地的历史研究目录；本地作者应额外声明原研究及历史目录。
 
 ```sh
 python3 scripts/init_workspace.py --workspace /separate/new_session \
@@ -64,7 +76,7 @@ python3 scripts/run_pipeline.py --workspace /separate/new_session --frozen-imput
 python3 scripts/run_pipeline.py --workspace /separate/another_new_session
 ```
 
-冻结分支需要合法 mice 对象与原样本行对齐，不能由普通用户凭空重建。单独运行下游脚本还需 analytic_v3.rds、全成人设计、缩放参数及对应上游输出；缺失即停止。第八阶段为验证限定模块导入过这些已验证前置对象，不代表完整上游已重新执行。单独运行说明与 MR 示例见 `docs/RUN_GUIDE.md`。
+冻结分支需要合法 mice 对象与原样本行对齐，不能由普通用户凭空重建。单独运行下游脚本还需 analytic_v3.rds、全成人设计、缩放参数及对应上游输出；缺失即停止。限定运行验证为验证限定模块导入过这些已验证前置对象，不代表完整上游已重新执行。单独运行说明与 MR 示例见 `docs/RUN_GUIDE.md`。
 
 ## 输出与论文对应
 
@@ -74,18 +86,18 @@ Table1/2 及主联合模型/Wald → `work/export/`、`work/imputation/`；症�
 
 ## 已验证范围、随机性与限制
 
-- 第五阶段：分组件重建 NHANES、主模型及多类敏感性/Bootstrap/规格结果；主插补模型使用冻结对象。它不是单条命令从原始数据到新插补再到全部论文结果的端到端证明。
-- 第七阶段：安全层、静态模型一致性和 98 项安全测试。
-- 第八阶段：MVMR b/SE/P 9 项一致；睡眠 28 输入匹配、40 次模型拟合、7 表 11,305 字段一致；S5/S8 与精度共 219 显示项一致；9 类启动器场景通过。S5/S8 执行了 pipeline 的真实最终导出语句，整条 pipeline 未执行。
+- 主结果重建：分组件重建 NHANES、主模型及多类敏感性/Bootstrap/规格结果；主插补模型使用冻结对象。它不是单条命令从原始数据到新插补再到全部论文结果的端到端证明。
+- 安全测试：安全层、静态模型一致性和 98 项安全测试。
+- 限定运行验证：MVMR b/SE/P 9 项一致；睡眠 28 输入匹配、40 次模型拟合、7 表 11,305 字段一致；S5/S8 与精度共 219 显示项一致；9 类启动器场景通过。S5/S8 执行了 pipeline 的真实最终导出语句，整条 pipeline 未执行。
 - 新插补设定 20 份 ×20 迭代、种子 20261008；AUC 500 次/20261013；Shapley 200 次及衰减 1,000 次/20261014。详见 `environment/seeds.csv`。本次未重跑任何科学模型。
 - 历史随机 MR 种子未知，median/mode 的重拟合 SE/P 可有差异；不以新随机值替换锁定稿件值。在线提取、LD clumping、历史 LD 快照继续 **UNVALIDATED**。本地冻结 MR/共定位与在线重建必须分开。
-- TwoSampleMR 0.6.29 加载时会访问 GitHub 公告/版本文件；第八阶段未调用 OpenGWAS 数据接口，但不能称严格无网络复现。
+- TwoSampleMR 0.6.29 加载时会访问 GitHub 公告/版本文件；限定运行验证未调用 OpenGWAS 数据接口，但不能称严格无网络复现。
 
 ## 许可与公开
 
-MIT LICENSE 已按 `Copyright (c) 2026 Wenjin Wang` 准备。适用范围仅为你有权授权的原创源码及配置：`scripts/**`、`tests/**`、`environment/check_versions.R`、`config/storage_policy.json`。依赖包、图件、聚合/参考 CSV 和外部数据不由此重新授权；其他权利与条款保持原样。来源核查和作者对 MR 原创性的确认见 `docs/LICENSE_REVIEW.md`。
+MIT LICENSE（Copyright (c) 2026 Wenjin Wang）适用于原创源码及配置：`scripts/**`、`tests/**`、`environment/check_versions.R`、`config/storage_policy.json`。依赖包、图件、聚合/参考 CSV 和外部数据不由此重新授权；其他权利与条款保持原样。来源核查和作者对 MR 原创性的确认见 `docs/LICENSE_REVIEW.md`。
 
-本包无个体级数据、私人 RDS/.RData、GWAS 输入、文献库、投稿手稿或凭据。公开范围依照作者接受的147文件/PDF-only方案，图件及聚合结果不默认采用MIT。尚未发布 GitHub/Zenodo。
+本仓库无个体级数据、私人 RDS/.RData、GWAS 输入、文献库、投稿手稿或凭据，公开内容限于代码、文档、聚合参考结果和 Figure3 PDF；图件及聚合结果不默认采用 MIT。
 
 ## 样本量与发布边界
 
@@ -98,5 +110,3 @@ MIT LICENSE 已按 `Copyright (c) 2026 Wenjin Wang` 准备。适用范围仅为�
 |睡眠Model3/4共同样本|29,024|
 
 这些样本量属于不同分析，不能互相替代；其余敏感性分析以各输出模型注册表为准。完整原始数据→新插补→全部结果的单次执行没有得到独立验证。
-
-公开候选仅保留Figure3 PDF与绘图代码/聚合坐标；PNG因内嵌第三方ICC profile暂不捆绑。PDF科研内容未修改，也未重新拟合或绘图。代码许可与图件、结果、外部数据的权利范围分开；MIT文本已准备，实际发布仍需最后批准。
